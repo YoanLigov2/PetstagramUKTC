@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Starts Main Section -->
+<main>
+    <!-- Start Edit Pet Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Редактирай Данните за Животното</h2>
+        <!-- Start Edit Pet From -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Edit Pet Button -->
+            <button class="edit-btn" type="submit">Редактирай</button>
+        </form>
+        <!-- End Edit Pet Form -->
+
+    </div>
+    <!-- End Edit Pet Section -->
+
+</main>
+<!-- End Main Section -->
+
+{% endblock %}

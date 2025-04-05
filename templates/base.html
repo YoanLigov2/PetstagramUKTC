@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Starts Head Section -->
+<head>
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Petstagram</title>
+</head>
+<!-- End Head Section -->
+<!-- Starts Body Section -->
+<body>
+
+<!-- Starts Header Section with Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Link to Home Page -->
+                <a href="{% url 'index' %}">
+                    <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}" alt="img1">
+                </a>
+
+                <!-- Link to Home Page -->
+                <a class="home" href="{% url 'index' %}">
+                    <i>Petstagram</i>
+                </a>
+            </div>
+            <div class="burger-menu">&#9776;</div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+
+                        <!-- Link to Add Pet Page -->
+                        <a href="{% url 'add-pet' %}">
+                            <i>Добави животно</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <!-- Link to Add Photo Page -->
+                        <a href="{% url 'add-photo' %}">
+                            <i>Добави снимка</i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+
+                        <!-- Link to Login Page -->
+                        <a href="{% url 'login' %}">
+                            <i>Вход</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <!-- Link to Register Page -->
+                        <a href="{% url 'register' %}">
+                            <i>Регистрация</i>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+
+                        <!-- Link to Profile Page -->
+                        <a href="{% url 'profile-details' request.user.pk %}">
+                            <i>Профил</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i>Излез</i>
+                        </a>
+
+                        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const burger = document.querySelector(".burger-menu");
+            const navLinks = document.querySelector(".nav-links");
+
+            burger.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        });
+    </script>
+
+</header>
+<!-- End Header Section with Navigation Bar -->
+
+<!-- Starts Main Section -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- End Main Section -->
+
+<!-- Start Footer Section -->
+<div class="footer">
+		<span class="footer-section">
+			© 2025 Ligov OOD production
+		</span>
+</div>
+<!-- End Footer Section -->
+
+</body>
+</html>

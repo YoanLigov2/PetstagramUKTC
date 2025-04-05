@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Starts Main Section -->
+<main>
+
+    <!-- Start Add Pet Section-->
+    <div class="edit-delete edit-photo">
+        <h2>Добави Животно</h2>
+
+        <!-- Start Add Pet Form -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Add Pet Button -->
+            <button class="add-btn" type="submit">Добави Животно</button>
+        </form>
+        <!-- End Add Pet Form -->
+
+    </div>
+    <!-- End Add Pet Section -->
+
+</main>
+<!-- End Main Section -->
+{% endblock %}

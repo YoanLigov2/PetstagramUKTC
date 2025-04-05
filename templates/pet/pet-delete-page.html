@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Starts Main Section -->
+<main>
+    <!-- Starts Delete Pet Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Изтрий животно</h2>
+        <!-- Starts Delete Pet Form -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Delete Pet Button -->
+            <button class="delete-btn" type="submit">Изтрий</button>
+            <!-- Go Back Button -->
+            <a class="btn btn-primary" href="javascript:history.back()">
+                <button class="edit-btn" type="button">Назад</button>
+            </a>
+        </form>
+        <!-- End Delete Pet Form -->
+    </div>
+    <!-- End Delete Pet Section -->
+</main>
+<!-- End Main Section -->
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Starts Main Section -->
+<main>
+
+    <!-- Start Login Section-->
+    <div class="login-register-div">
+        <div class="login-register-box">
+            <h1>Petstagram</h1>
+
+            <!-- Start Login Form-->
+            <form method="post">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+                <!-- Login Button-->
+                <button type="submit">Вход</button>
+            </form>
+            <!-- End Login Form -->
+
+        </div>
+        <div class="second-option">
+
+            <!-- Link to Register Page-->
+            <p>Нямаш акаунт? <a href="{% url 'register' %}">Регистрация</a></p>
+        </div>
+    </div>
+    <!-- End Login Section-->
+
+</main>
+<!-- End Main Section -->
+
+{% endblock %}

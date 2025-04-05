@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Starts Main Section -->
+<main>
+    <!-- Start Add Photo Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Добави снимка</h2>
+        <!-- Start Add Photo Form -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- Add Photo Button -->
+            <button class="add-btn" type="submit">Добави снимка</button>
+        </form>
+        <!-- End Add Photo Form -->
+    </div>
+    <!-- End Add Photo Section -->
+</main>
+<!-- End Main Section -->
+
+{% endblock %}
