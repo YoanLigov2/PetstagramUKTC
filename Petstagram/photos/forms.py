@@ -26,3 +26,9 @@ class PhotoEditForm(forms.ModelForm):
     class Meta:
         model = Photo
         exclude = ['photo', 'user']
+
+        labels = {
+            'description': 'Описание:',
+            'location': 'Локация',
+            'tagged_pets': 'Спомени:'
+        }
